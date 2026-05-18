@@ -1,0 +1,40 @@
+---
+layout: layouts/base.njk
+title: About
+pageScript:
+---
+
+<section class="viewer">
+  <div class="wrap viewerInner">
+    <h1 class="viewerTitle">About</h1>
+    <p class="muted">
+      Digital Card Maker is a lightweight tool for creating a shareable digital business card.
+      Everything runs client-side: your details stay in your browser, exports are generated locally, and share links encode the card data in the URL.
+    </p>
+
+    <div class="ads" aria-label="About details">
+      <div class="adCard">
+        <div class="adTitle">How sharing works</div>
+        <div class="adCopy">
+          When you generate a QR code, it points to a public card URL that includes your card data in the hash (the part after <strong>#</strong>).
+          This makes it Netlify-friendly and doesn’t require a server database.
+        </div>
+      </div>
+
+      <div class="adCard">
+        <div class="adTitle">Downloads</div>
+        <div class="adCopy">
+          You can download a QR-only PNG, a 9:16 phone image, or a business-card sized PNG.
+          These are rendered in your browser.
+        </div>
+      </div>
+
+      <div class="adCard">
+        <div class="adTitle">Privacy</div>
+        <div class="adCopy">
+          This site doesn’t require an account. If you share a link/QR, anyone with the link can view the card data contained in it.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

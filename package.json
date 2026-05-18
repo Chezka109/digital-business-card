@@ -1,0 +1,17 @@
+{
+    "name": "digital-business-card-maker",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build:vendor": "node scripts/copy-vendor.mjs",
+        "build:icons": "node scripts/build-icons.mjs",
+        "build": "npm run build:vendor && npm run build:icons && eleventy",
+        "dev": "npm run build:vendor && npm run build:icons && eleventy --serve",
+        "start": "npm run dev"
+    },
+    "dependencies": {
+        "@11ty/eleventy": "^3.0.0",
+        "qrcode-generator": "^2.0.4",
+        "simple-icons": "^14.0.0"
+    }
+}

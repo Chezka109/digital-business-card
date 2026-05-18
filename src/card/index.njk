@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: Your Digital Card
+pageScript: viewer.js
+---
+
+<section class="viewer">
+  <div class="wrap viewerInner">
+    <h1 class="viewerTitle">Digital business card</h1>
+    <p class="muted">This link contains the card data. Save it or share it.</p>
+
+    <div class="viewerFrame">
+      <canvas id="publicCanvas" width="900" height="540" aria-label="Public card canvas"></canvas>
+      <div id="publicWeb" class="publicWeb" hidden aria-label="Public web card"></div>
+    </div>
+
+    <div class="viewerError" id="viewerError" hidden role="status" aria-live="polite">
+      Invalid or missing card data in this URL.
+    </div>
+  </div>
+</section>

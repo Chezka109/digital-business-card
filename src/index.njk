@@ -1,0 +1,204 @@
+---
+layout: layouts/base.njk
+title: Digital Business Card Maker
+---
+
+<section class="hero">
+  <div class="wrap heroInner">
+    <div class="heroLeft">
+      <h1 class="heroTitle">Where aesthetics and functionality meet</h1>
+      <p class="heroLead">
+        Make a digital business card in minutes. Choose a style, pick colors, add links, generate a QR code, and download.
+      </p>
+      <div class="heroMeta">
+        <div class="pill">No login</div>
+        <div class="pill">Client-side</div>
+        <div class="pill">PNG exports</div>
+      </div>
+    </div>
+    <aside class="ads" aria-label="Promotions">
+      <div class="adCard">
+        <div class="adTitle">Created by Chezka Quinola</div>
+        <div class="adCopy">If this helped you, connect with me.</div>
+        <div class="adLinks">
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+      <div class="adCard">
+        <div class="adTitle">Open source</div>
+        <div class="adCopy">Feel free to fork and improve the templates.</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="maker" id="maker">
+  <div class="wrap makerGrid">
+    <div class="makerForm" aria-label="Business card maker">
+      <div class="stepHeader">
+        <div class="stepKicker">Card maker</div>
+        <h2 class="stepTitle">Build your card</h2>
+        <div class="stepProgress" role="status" aria-live="polite">
+          <span id="stepLabel">Step 1 of 4</span>
+        </div>
+      </div>
+
+      <form id="cardForm" class="form" autocomplete="on">
+        <section class="step" data-step="1">
+          <h3 class="stepSectionTitle">Style</h3>
+
+          <div class="fieldRow">
+            <label class="field" id="styleField">
+              <span class="label">Card style</span>
+              <select name="style" id="style">
+                <option value="minimal" selected>Minimal</option>
+                <option value="bold">Bold</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="label">Font family</span>
+              <select name="font" id="font">
+                <option value="serif" selected>Serif</option>
+                <option value="sans">Sans serif</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="fieldRow">
+            <label class="field">
+              <span class="label">Main color</span>
+              <input type="color" id="mainColor" name="mainColor" value="#f6f5f2" aria-label="Main color" />
+            </label>
+
+            <label class="field">
+              <span class="label">Accent color</span>
+              <input type="color" id="accentColor" name="accentColor" value="#c8c2ff" aria-label="Accent color" />
+            </label>
+          </div>
+
+          <label class="field toggleRow">
+            <span class="label">Make it look like an actual business card</span>
+            <input type="checkbox" id="isBusinessCard" name="isBusinessCard" />
+          </label>
+
+          <div class="stepActions">
+            <button type="button" class="btn" data-next>Next</button>
+          </div>
+        </section>
+
+        <section class="step" data-step="2" hidden>
+          <h3 class="stepSectionTitle">Details</h3>
+
+          <div class="fieldRow">
+            <label class="field">
+              <span class="label">Full name</span>
+              <input name="name" id="name" placeholder="Jane Doe" />
+            </label>
+
+            <label class="field">
+              <span class="label">Role / title</span>
+              <input name="role" id="role" placeholder="Designer" />
+            </label>
+          </div>
+
+          <div class="fieldRow">
+            <label class="field">
+              <span class="label">Company</span>
+              <input name="company" id="company" placeholder="Studio Name" />
+            </label>
+
+            <label class="field">
+              <span class="label">Website</span>
+              <input name="website" id="website" placeholder="https://example.com" inputmode="url" />
+            </label>
+          </div>
+
+          <div class="fieldRow">
+            <label class="field">
+              <span class="label">Email</span>
+              <input name="email" id="email" placeholder="you@email.com" inputmode="email" />
+            </label>
+
+            <label class="field">
+              <span class="label">Phone</span>
+              <input name="phone" id="phone" placeholder="+1 555 123 4567" inputmode="tel" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="label">Location (optional)</span>
+            <input name="location" id="location" placeholder="City, Country" />
+          </label>
+
+          <div class="stepActions">
+            <button type="button" class="btn btnGhost" data-prev>Back</button>
+            <button type="button" class="btn" data-next>Next</button>
+          </div>
+        </section>
+
+        <section class="step" data-step="3" hidden>
+          <h3 class="stepSectionTitle">Socials</h3>
+          <p class="muted">Click + to add platforms, then paste your URLs.</p>
+
+          <div class="socialPicker">
+            <button type="button" class="btn btnGhost" id="socialAddBtn">+ Add a social</button>
+            <div class="socialMenu" id="socialMenu" hidden></div>
+          </div>
+
+          <div class="socialSelected" id="socialSelected"></div>
+
+          <div class="stepActions">
+            <button type="button" class="btn btnGhost" data-prev>Back</button>
+            <button type="button" class="btn" data-next>Next</button>
+          </div>
+        </section>
+
+        <section class="step" data-step="4" hidden id="download">
+          <h3 class="stepSectionTitle">Download</h3>
+          <p class="muted">Pick a format, then download.</p>
+
+          <label class="field">
+            <span class="label">Download format</span>
+            <select id="downloadFormat" name="downloadFormat">
+              <option value="qr" selected>Just the QR code (PNG)</option>
+              <option value="phone16x9">9:16 vertical image (fits a phone) (PNG)</option>
+              <option value="business">Business card size (3.5×2 in @ 300dpi) (PNG)</option>
+            </select>
+          </label>
+
+          <div class="fieldRow">
+            <button type="button" class="btn btnGhost" data-prev>Back</button>
+            <button type="button" class="btn" id="downloadBtn">Download</button>
+          </div>
+        </section>
+      </form>
+    </div>
+
+    <div class="makerPreview" aria-label="Preview">
+      <div class="previewHeader">
+        <div class="previewTitle">Preview</div>
+        <div class="previewHint">Updates as you type</div>
+      </div>
+
+      <div class="previewFrame" id="previewFrame">
+        <canvas id="previewCanvas" width="900" height="540" aria-label="Card preview canvas"></canvas>
+        <div id="webPreview" class="webPreview" hidden aria-label="Web preview"></div>
+      </div>
+
+      <div class="previewMeta">
+        <div class="small">QR opens your public card URL.</div>
+        <div class="small">Exports are generated locally in your browser.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="overlay" id="loadingOverlay" hidden aria-hidden="true">
+  <div class="overlayCard" role="status" aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+    <div class="overlayTitle">Generating QR code right now…</div>
+    <div class="overlayCopy">One moment.</div>
+  </div>
+</div>

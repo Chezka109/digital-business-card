@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or "Digital Business Card Maker" }}</title>
+    <meta name="description" content="Make a digital business card, generate a QR code, and download it." />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="siteHeader">
+      <div class="wrap siteHeaderInner">
+        <div class="brand">
+          <div class="brandMark" aria-hidden="true"></div>
+          <div>
+            <div class="brandName">Digital Card Maker</div>
+            <div class="brandSub">Eleventy • QR • Exports</div>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="/#maker">Make</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      {{ content | safe }}
+    </main>
+
+    <footer class="siteFooter" id="about">
+      <div class="wrap siteFooterInner">
+        <div class="footerTitle">Created by Chezka Quinola</div>
+        <div class="footerCopy">
+          This is open source — feel free to add me on LinkedIn or GitHub.
+        </div>
+        <div class="footerLinks">
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/vendor/qrcode.js"></script>
+    {% if pageScript is defined %}
+      {% if pageScript %}
+        <script type="module" src="/assets/{{ pageScript }}"></script>
+      {% endif %}
+    {% else %}
+      <script type="module" src="/assets/app.js"></script>
+    {% endif %}
+  </body>
+</html>

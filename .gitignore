@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# build output
+_site/
+
+# local Netlify folder
+.netlify/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS/editor
+.DS_Store
+.vscode/
