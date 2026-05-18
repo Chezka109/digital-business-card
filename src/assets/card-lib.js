@@ -367,7 +367,16 @@ export function decodeCardState(encoded) {
 }
 
 export function buildPublicCardUrl(cardState, origin = globalThis.location?.origin) {
-    const base = new URL("/card/", origin || "https://example.com");
+    const rawBasePath = typeof globalThis.__CARD_APP_BASE_PATH__ === "string" ? globalThis.__CARD_APP_BASE_PATH__ : "/";
+
+    let basePath = String(rawBasePath || "/");
+    if (!basePath.startsWith("/")) basePath = `/${basePath}`;
+    basePath = basePath.replace(/\/{2,}/g, "/");
+    if (!basePath.endsWith("/")) basePath += "/";
+
+    const cardPath = `${basePath}card/`;
+
+    const base = new URL(cardPath, origin || "https://example.com");
     const encoded = encodeCardState(cardState);
     base.hash = encoded;
     return base.toString();

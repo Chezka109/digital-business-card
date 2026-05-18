@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ title or "Digital Business Card Maker" }}</title>
     <meta name="description" content="Make a digital business card, generate a QR code, and download it." />
-    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="{{ '/assets/styles.css' | url }}" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -20,8 +20,8 @@
           </div>
         </div>
         <nav class="nav">
-          <a href="/#maker">Make</a>
-          <a href="/about/">About</a>
+          <a href="{{ '/#maker' | url }}">Make</a>
+          <a href="{{ '/about/' | url }}">About</a>
         </nav>
       </div>
     </header>
@@ -43,13 +43,16 @@
       </div>
     </footer>
 
-    <script src="/assets/vendor/qrcode.js"></script>
+    <script>
+      globalThis.__CARD_APP_BASE_PATH__ = "{{ '/' | url }}";
+    </script>
+    <script src="{{ '/assets/vendor/qrcode.js' | url }}"></script>
     {% if pageScript is defined %}
       {% if pageScript %}
-        <script type="module" src="/assets/{{ pageScript }}"></script>
+        <script type="module" src="{{ ('/assets/' + pageScript) | url }}"></script>
       {% endif %}
     {% else %}
-      <script type="module" src="/assets/app.js"></script>
+      <script type="module" src="{{ '/assets/app.js' | url }}"></script>
     {% endif %}
   </body>
 </html>
